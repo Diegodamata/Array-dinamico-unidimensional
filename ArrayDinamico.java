@@ -32,7 +32,6 @@ public class ArrayDinamico{
         System.out.println();
         System.out.println("Primeiro pop:");
         removerUltimoElemento();
-        System.out.println();
         for(int i=0; i<array.length; i++){
             System.out.print(" " + array[i]);
         }
@@ -40,11 +39,17 @@ public class ArrayDinamico{
         System.out.println();
         System.out.println("Segundo pop:");
         removerUltimoElemento();
-        System.out.println();
         for(int i=0; i<array.length; i++){
             System.out.print(" " + array[i]);
         }
-       
+
+        System.out.println();
+        System.out.println("Removendo por valor");
+        removerPorValor(17);
+        for(int i=0; i<array.length; i++){
+            System.out.print(" " + array[i]);
+        }
+
         sc.close();
     }
 
@@ -77,6 +82,34 @@ public class ArrayDinamico{
         }
 
         tamanho = posicao;
+
+        int[] copia = new int[tamanho-1];
+
+        for(int i=0; i<copia.length; i++){
+            copia[i] = array[i];
+        }
+
+        array = copia;
+        posicao--;
+    }
+
+    public static void removerPorValor(int valor){
+        if (posicao == 0) {
+            System.out.println("Está vazio!");
+        }
+        tamanho = posicao;
+
+        int posicaoValor = 0;
+        for(int i=0; i<tamanho; i++){
+            if (array[i] == valor) {
+                posicaoValor = i;
+            }
+        }
+
+        for(int i=posicaoValor; i<tamanho-1; i++){
+            array[i] = array[i+1];
+        }
+
 
         int[] copia = new int[tamanho-1];
 
